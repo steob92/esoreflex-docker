@@ -49,7 +49,7 @@ to
             image: username/imagename:version
 ```
 
-Where `username/imagename:version` corresponds to the Docker Hub username, the imagename, and the image version. For example, to use the `obriens` Docker Hub image `eso_reflex` with the `latest` version, use:
+Where `username/imagename:version` corresponds to the Docker Hub username, the imagename, and the image version. For example, to use the `obriens` Docker Hub image `eso_reflex` with the `latest` version (see [here](https://hub.docker.com/repository/docker/obriens/eso_reflex/general)), use:
 ```
         build:
             # Local build
