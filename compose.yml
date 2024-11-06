@@ -3,14 +3,17 @@ version: '3.8'
 services:
     app:
         build:
+            # Local build
             context: .
             dockerfile: Dockerfile
+            # Remote from Docker Hub
+            # image: obriens/eso_reflex:latest
         ports:
             - "6081:6081"
             - "5901:5901"
         volumes:
             # Path to the raw data folder
-            - ./raw_data:/home/docker/reflex_rawdata
+            - ./raw_data:/home/docker/reflex_rawdata:rw
             # Path to the output data folder
-            - ./reflex_data:/home/docker/reflex_data
+            - ./reflex_data:/home/docker/reflex_data:rw
         
