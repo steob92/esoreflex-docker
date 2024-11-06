@@ -72,7 +72,8 @@ From the same directory to shut down the container.
 
 ## Pure Docker
 
-To build the image, run:```
+To build the image, run:
+```
 docker build -t username/imagename:version .  
 ```
 Replace `username`, `imagename` and `version` where appropriate. For example:
@@ -115,4 +116,4 @@ Type `esoreflex molecfit`, for example, to start the `molecfit` pipeline:
 
 After a few moments, the pipeline will load and display a graphical interface:
 
-![Kepler GUI](images/noVNC-molecfit-kepler.png)
+![Kepler GUI](images/noVNC-molecfit-kepler.png)After a few moments the pipeline will load and open up a graphical interface:
