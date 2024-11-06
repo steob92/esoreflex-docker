@@ -1,13 +1,20 @@
 version: '3.8'
 
 services:
-    app:
+    eso_reflex:
         build:
             # Local build
             context: .
             dockerfile: Dockerfile
             # Remote from Docker Hub
             # image: obriens/eso_reflex:latest
+            args:
+                - UID=1001 # id -u
+                - GID=1001 # id -g
+                - USER=dockerz # whoami
+                - PASSWORD=password
+
+        container_name: eso_reflex
         ports:
             - "6081:6081"
             - "5901:5901"
@@ -16,4 +23,5 @@ services:
             - ./raw_data:/home/docker/reflex_rawdata:rw
             # Path to the output data folder
             - ./reflex_data:/home/docker/reflex_data:rw
+
         
