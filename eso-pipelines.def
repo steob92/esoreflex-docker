@@ -1,0 +1,23 @@
+Bootstrap: docker
+From: fedora:39
+  
+%post
+  dnf install -y dnf-plugins-core
+  dnf update -y
+  dnf config-manager -y --add-repo=https://ftp.eso.org/pub/dfs/pipelines/repositories/stable/fedora/esorepo.repo
+  
+  esopipes_list="{{ pipelines }}"
+  IFS=';' read -r -a packages <<< "$esopipes_list"
+
+  for package in "${packages[@]}"
+  do
+    echo "Installing $package..."
+    dnf install -y esopipe-"$package" esopipe-"$package"-wkf
+    find /usr/share/reflex/workflows/$package* -type f -name "*.xml" -exec sed -i 's|value="/usr/share/esopipes/datademo/'"$package"'/"|value="$HOME/reflex_rawdata/"|g' {} +
+  done
+
+  dnf clean all
+%environment
+  export LC_ALL=C
+  export LANG=C
+

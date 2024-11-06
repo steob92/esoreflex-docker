@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - "6081:6081"
+            - "5901:5901"
+        volumes:
+            # Path to the raw data folder
+            - ./raw_data:/home/docker/reflex_rawdata
+            # Path to the output data folder
+            - ./reflex_data:/home/docker/reflex_data
+        
